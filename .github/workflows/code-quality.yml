@@ -27,8 +27,9 @@ jobs:
 
       - name: Download Checkstyle
         run: |
-          curl -LO https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.2/checkstyle-9.2-all.jar
+          wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.2/checkstyle-9.2-all.jar
           ls -l checkstyle-9.2-all.jar
+          file checkstyle-9.2-all.jar
 
       - name: Run Checkstyle
         run: |
@@ -36,8 +37,9 @@ jobs:
 
       - name: Download Google Java Format
         run: |
-          curl -LO https://github.com/google/google-java-format/releases/download/v1.9/google-java-format-1.9-all-deps.jar
+          wget https://github.com/google/google-java-format/releases/download/v1.9/google-java-format-1.9-all-deps.jar
           ls -l google-java-format-1.9-all-deps.jar
+          file google-java-format-1.9-all-deps.jar
 
       - name: Run Google Java Format
         run: |
