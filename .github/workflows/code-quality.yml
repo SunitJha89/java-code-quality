@@ -22,12 +22,23 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Run Checkstyle
+      - name: List files in the repository
+        run: ls -R
+
+      - name: Download Checkstyle
         run: |
           curl -LO https://github.com/checkstyle/checkstyle/releases/download/checkstyle-9.2/checkstyle-9.2-all.jar
+          ls -l checkstyle-9.2-all.jar
+
+      - name: Run Checkstyle
+        run: |
           java -jar checkstyle-9.2-all.jar -c /google_checks.xml src/
+
+      - name: Download Google Java Format
+        run: |
+          curl -LO https://github.com/google/google-java-format/releases/download/v1.9/google-java-format-1.9-all-deps.jar
+          ls -l google-java-format-1.9-all-deps.jar
 
       - name: Run Google Java Format
         run: |
-          curl -LO https://github.com/google/google-java-format/releases/download/v1.9/google-java-format-1.9-all-deps.jar
           java -jar google-java-format-1.9-all-deps.jar -i $(find src/ -name '*.java')
